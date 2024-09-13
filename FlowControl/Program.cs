@@ -13,18 +13,21 @@ namespace FlowControl
                     " numbers to test the different functions");
                 Console.WriteLine("1: Movie ticket price calculator");
                 Console.WriteLine("2: Movie ticket price calculator for a group");
+                Console.WriteLine("3: Loop a line 10 times");
                 Console.WriteLine("0: Exit program");
                 switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':
                         Console.WriteLine(CinemaTools.MovieTicketPriceCalculator());
-                        Console.WriteLine("\nPress any key to continue");
-                        Console.ReadKey(true);
+                        GeneralTools.WaitForUserContinueMessage(false);
                         break;
                     case '2':
                         Console.WriteLine(CinemaTools.MovieTicketPriceCalculatorForGroup());
-                        Console.WriteLine("\nPress any key to continue");
-                        Console.ReadKey(true);
+                        GeneralTools.WaitForUserContinueMessage(false);
+                        break;
+                    case '3':
+                        LoopTools.LoopInputTenTimes();
+                        GeneralTools.WaitForUserContinueMessage(false);
                         break;
                     case '0':
                         exitLoop = true;
