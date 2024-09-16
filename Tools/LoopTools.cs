@@ -8,7 +8,7 @@ namespace Tools
 {
     public static class LoopTools
     {
-        public static void LoopInputTenTimes()
+        public static void LoopInput(int timesToLoop = 10)
         {
             Console.Clear();
             Console.WriteLine("Enter input to be looped");
@@ -16,7 +16,7 @@ namespace Tools
             var input = Console.ReadLine();
 
             Console.Clear();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < timesToLoop; i++)
             {
                 Console.Write(input + " ");
             }

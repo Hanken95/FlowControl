@@ -14,6 +14,7 @@ namespace FlowControl
                 Console.WriteLine("1: Movie ticket price calculator");
                 Console.WriteLine("2: Movie ticket price calculator for a group");
                 Console.WriteLine("3: Loop a line 10 times");
+                Console.WriteLine("4: Find the third word");
                 Console.WriteLine("0: Exit program");
                 switch (Console.ReadKey(true).KeyChar)
                 {
@@ -26,7 +27,11 @@ namespace FlowControl
                         GeneralTools.WaitForUserContinueMessage(false);
                         break;
                     case '3':
-                        LoopTools.LoopInputTenTimes();
+                        LoopTools.LoopInput();
+                        GeneralTools.WaitForUserContinueMessage(false);
+                        break;
+                    case '4':
+                        Console.WriteLine($"The third word is {WordManipulationTools.ReturnTheThirdWord()}");
                         GeneralTools.WaitForUserContinueMessage(false);
                         break;
                     case '0':

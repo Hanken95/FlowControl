@@ -8,14 +8,18 @@ namespace Tools
 {
     public enum PriceGroup
     {
+        Child = 0,
+        Elder = 0,
         Youth = 80,
         Retiree = 90,
         Standard = 120
     }
     public enum PriceGroupMaxAge
     {
+        ChildMaxAge = 4,
         YouthMaxAge = 19,
-        StandardMaxAge = 64
+        StandardMaxAge = 64,
+        RetireeMaxAge = 100,
     }
 
     public static class CinemaTools
@@ -24,6 +28,14 @@ namespace Tools
         {
             int age = AgeInputHandler();
             Console.Clear();
+            if (age <= (int)PriceGroupMaxAge.ChildMaxAge)
+            {
+                return $"Child price: {(int)PriceGroup.Child}kr";
+            }
+            else if (age > (int)PriceGroupMaxAge.RetireeMaxAge)
+            {
+                return $"Elder price: {(int)PriceGroup.Elder}kr";
+            }
             if (age <= (int)PriceGroupMaxAge.YouthMaxAge)
             {
                 return $"Youth price: {(int)PriceGroup.Youth}kr";
@@ -74,7 +86,15 @@ namespace Tools
             int totalPrice = 0;
             foreach (int age in AgesOfGroupInputHandler(amountOfPeople))
             {
-                if (age <= (int)PriceGroupMaxAge.YouthMaxAge)
+                if (age <= (int)PriceGroupMaxAge.ChildMaxAge)
+                {
+                    totalPrice += (int)PriceGroup.Child;
+                }
+                else if (age > (int)PriceGroupMaxAge.RetireeMaxAge)
+                {
+                    totalPrice += (int)PriceGroup.Elder;
+                }
+                else if (age <= (int)PriceGroupMaxAge.YouthMaxAge)
                 {
                     totalPrice += (int)PriceGroup.Youth;
                 }
@@ -110,7 +130,7 @@ namespace Tools
                     else
                     {
                         Console.WriteLine();
-                        Console.WriteLine("Age can only be between 0 and 150");
+                        Console.WriteLine("Age can only be from 0 to 150");
                         Console.WriteLine("Press a key to restart age input");
                         Console.ReadKey();
                     }
